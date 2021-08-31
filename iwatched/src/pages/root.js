@@ -4,7 +4,7 @@ import {
     Switch,
     Route,
 } from 'react-router-dom'
-import Search from './Search/Search'
+import Search from 'pages/Search/Search'
 
 const Root = () => (
     <Router>
