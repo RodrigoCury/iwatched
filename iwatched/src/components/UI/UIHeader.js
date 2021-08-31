@@ -11,4 +11,5 @@ export const Title = styled(Link)`
 export const Header = styled.header`
     display: flex;
     align-items: flex-start;
+    margin-bottom: 25px;
 `
