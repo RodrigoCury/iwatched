@@ -17,6 +17,9 @@ function heartIt(grade){
 const CardDiv = styled.div`
     width: 200px;
     heigth: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     -webkit-border-radius: 20px;
     -webkit-border-top-right-radius: 5px;
     -webkit-border-bottom-left-radius: 5px;
@@ -33,9 +36,16 @@ const CardDiv = styled.div`
     margin-bottom: 15px;
 `
 
+const ImgDiv = styled.div`
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
 const CardImg = styled.img`
     width: 100%;
-    display: block;
 `
 
 const MovieTitle = styled.a`
@@ -68,16 +78,20 @@ const HeartDiv = styled.div`
 
 const Card = ({ movie }) => {
 
-    const [grade, setGrade] = useState(movie.hearts)
+    const [grade, setGrade] = useState(movie.hearts ?? null)
 
     return (
         <CardDiv>
-            <CardImg src={movie.imageUrl} />
+            <ImgDiv>
+                <CardImg src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+            </ImgDiv>
             <CardDescription movie={movie}>
-                <MovieTitle href={movie.href} >{movie.name}</MovieTitle>
-                <HeartDiv>
-                    {heartIt(grade).map((Heart, idx) => (<Heart key={idx} onClick={() => setGrade(idx+1)}/>))}
-                </HeartDiv>
+                <MovieTitle href={`https://www.themoviedb.org/movie/${movie.id}`} >{movie["title"]}</MovieTitle>
+                {grade && 
+                    <HeartDiv>
+                        {heartIt(grade).map((Heart, idx) => (<Heart key={idx} onClick={() => setGrade(idx+1)}/>))}
+                    </HeartDiv>
+                }
             </CardDescription>
         </CardDiv>
     )
