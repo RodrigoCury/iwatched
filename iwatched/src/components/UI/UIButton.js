@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import PropTypes from 'prop-types'
+import { Link } from "react-router-dom"
 
 const style = `
     padding: 5px 10px;
@@ -33,6 +34,9 @@ const ButtonTypes = {
         ${style}
     `,
     a : styled.a`
+        ${style}
+    `,
+    Link : styled(Link)`
         ${style}
     `
 }

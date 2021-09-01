@@ -1,76 +1,118 @@
-import React, { useState } from "react"
-import { useHistory } from "react-router-dom"
-import UIBody from "components/UI/UIBody"
-import UIForm from "components/Form/Form"
+import React, { useContext, useState, useEffect } from "react";
+import { useHistory, Redirect } from "react-router-dom";
+import UIBody from "components/UI/UIBody";
+import UIForm from "components/Form/Form";
+import StoreContext from "components/Store/Context";
+import useApi from "components/utils/useApi";
 
 const initialFormValues = {
-    user: "",
-    password: "",
-}
-
-
+  user: "",
+  password: "",
+};
 
 const Login = () => {
+  const history = useHistory();
 
-    const [formValues, setFormValues] = useState(initialFormValues)
+  const [formValues, setFormValues] = useState(initialFormValues);
+  const { token, setToken } = useContext(StoreContext)
 
-    function onSubmit(event) {
-        event.preventDefault()
-        console.log(formValues,)
+  const [call, requestInfo] = useApi({
+    url: "http://localhost:3340/users",
+    params: {
+      user: formValues.user
     }
+  })
 
-    const history = useHistory()
 
-    function cancel() {
+  function onChange(ev) {
+    const { value, name } = ev.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  }
+
+  function onSubmit(event) {
+    event.preventDefault();
+    call()
+  }
+
+  useEffect(() => {
+    if (requestInfo.data && !requestInfo.loading){
+      const {username, password, id, token} = requestInfo.data[0];
+
+      if(formValues.user == username && password == formValues.password){
+        setToken({
+          id,
+          user: username,
+          token: token,
+        })
         history.push('/')
+      } else {
+        console.log("no pass")
+      }
+      return
     }
 
-    const fields = [
-        {
-            id: "user",
-            name: "user",
-            label: "Usuário",
-            type: "text",
-            placeholder: "Usuário...",
-            onChange: (ev) => setFormValues({
-                ...formValues,
-                [ev.target.id] : ev.target.value
-            }),
-            value: formValues.user
-        },
-        {
-            id: "password",
-            name: "password",
-            label: "Senha",
-            placeholder: "Senha...",
-            type: "password",
-            onChange: (ev) => setFormValues({
-                ...formValues,
-                [ev.target.id] : ev.target.value
-            }),
-            value: formValues.password
-        },
-    ]
+    if(requestInfo.error){
+      console.log(requestInfo.error);
+    }
 
-    const buttons = [
-        {
-            component: "button",
-            type: "submit",
-            innerText: "Entrar"
-        },
-        {
-            component: "button",
-            type: "button",
-            innerText: "Voltar",
-            onClick: cancel,
-        },
-    ]
+  }, [requestInfo])
 
-    return (
-        <UIBody>
-            <UIForm onSubmit={onSubmit} fields={fields} title="Login" buttons={buttons}/>
-        </UIBody>
-    )
+  function cancel() {
+    history.push("/");
+  }
+
+  const fields = [
+    {
+      id: "user",
+      name: "user",
+      label: "Usuário",
+      type: "text",
+      placeholder: "Usuário...",
+      onChange,
+      value: formValues.user,
+    },
+    {
+      id: "password",
+      name: "password",
+      label: "Senha",
+      placeholder: "Senha...",
+      type: "password",
+      onChange,
+      value: formValues.password,
+    },
+  ];
+
+  const buttons = [
+    {
+      component: "button",
+      type: "submit",
+      innerText: "Entrar",
+    },
+    {
+      component: "button",
+      type: "button",
+      innerText: "Voltar",
+      onClick: cancel,
+    },
+  ];
+
+  if (token && token.token) {
+      return (<Redirect to="/"/>)
+  }
+
+  return (
+    <UIBody>
+      <UIForm
+        onSubmit={onSubmit}
+        fields={fields}
+        title="Login"
+        buttons={buttons}
+      />
+    </UIBody>
+  )
 }
 
-export default Login
+export default Login;

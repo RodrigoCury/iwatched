@@ -4,57 +4,87 @@
             "id": 1,
             "name": "MiranhaVerso2",
             "href": "https://www.themoviedb.org/movie/569094-spider-man-into-the-spider-verse-2",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8ycplQbTU6DRRwiG95lQEpYkOVg.jpg",
-            "hearts": 4
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8ycplQbTU6DRRwiG95lQEpYkOVg.jpg"
         },
         {
             "id": 2,
             "name": "Homem-Aranha: No Aranhaverso",
             "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg"
         },
         {
             "id": 3,
             "name": "F9",
             "href": "https://www.themoviedb.org/movie/385128-f9",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fnAzaxRSiveFafudJtByxA7I2xT.jpg",
-            "hearts": 1
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fnAzaxRSiveFafudJtByxA7I2xT.jpg"
         },
         {
             "id": 4,
             "name": "Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso",
             "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg"
         },
         {
             "id": 5,
             "name": "MiranhaVerso2",
             "href": "https://www.themoviedb.org/movie/569094-spider-man-into-the-spider-verse-2",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8ycplQbTU6DRRwiG95lQEpYkOVg.jpg",
-            "hearts": 4
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8ycplQbTU6DRRwiG95lQEpYkOVg.jpg"
         },
         {
             "id": 6,
             "name": "Homem-Aranha: No Aranhaverso",
             "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg"
         },
         {
             "id": 7,
             "name": "F9",
             "href": "https://www.themoviedb.org/movie/385128-f9",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fnAzaxRSiveFafudJtByxA7I2xT.jpg",
-            "hearts": 1
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fnAzaxRSiveFafudJtByxA7I2xT.jpg"
         },
         {
             "id": 8,
             "name": "Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso",
             "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
+            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg"
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "username": "Rodrigo",
+            "password": "1234",
+            "token": "1234",
+            "likes": [
+                {
+                    "movieId": 1,
+                    "hearts": 3
+                },
+                {
+                    "movieId": 2,
+                    "hearts": 3
+                },
+                {
+                    "movieId": 3,
+                    "hearts": 3
+                },
+                {
+                    "movieId": 4,
+                    "hearts": 3
+                },
+                {
+                    "movieId": 5,
+                    "hearts": 3
+                },
+                {
+                    "movieId": 6,
+                    "hearts": 3
+                },
+                {
+                    "movieId": 7,
+                    "hearts": 3
+                }
+            ]
         }
     ]
 }
