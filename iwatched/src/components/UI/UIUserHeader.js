@@ -10,7 +10,7 @@ const Div = styled.div`
     align-items: flex-start;
 `
 
-const UserH2 = styled.h2`
+const UserH2 = styled.h3`
     color: #FFF;
     margin-right: 10px;
 `
