@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useHistory, Redirect } from "react-router-dom";
-import UIBody from "components/UI/UIBody";
 import UIForm from "components/Form/Form";
 import StoreContext from "components/Store/Context";
 import useApi from "components/utils/useApi";
+import { BasePageNoSearch } from "components/UI/UIPages/Pages";
 
 const initialFormValues = {
   user: "",
@@ -104,14 +104,14 @@ const Login = () => {
   }
 
   return (
-    <UIBody>
+    <BasePageNoSearch>
       <UIForm
         onSubmit={onSubmit}
         fields={fields}
         title="Login"
         buttons={buttons}
       />
-    </UIBody>
+    </BasePageNoSearch>    
   )
 }
 
