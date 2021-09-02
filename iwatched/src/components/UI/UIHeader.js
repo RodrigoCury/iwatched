@@ -6,8 +6,8 @@ import UIUserHeader from "./UIUserHeader"
 
 
 const Title = styled(Link)`
-    color: #34ace0;
-    font-size: 40px;
+    color: #FFFFFF;
+    font-size: 30px;
     text-decoration: none;
     font-weight: bold;
     align-self: center;
@@ -17,7 +17,9 @@ const Header = styled.header`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 25px;
+    align-items: center;
+    margin: 25px auto;
+    max-width: 1000px;
     `
     
 export default function UIHeader() {
@@ -30,8 +32,8 @@ export default function UIHeader() {
 
     return (
         <Header>
-        <Title to='/'>iWatched</Title>
-        <UIUserHeader token={token} logOut={logOut}/>
-    </Header>
+            <Title to='/'>iWatched</Title>
+            <UIUserHeader token={token} logOut={logOut}/>
+        </Header>
     )
 }
