@@ -27,13 +27,17 @@ const CardDiv = styled.div`
             if (props.toWatch) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(255, 82, 82, 0.74) 60.94%, #B33939 100%) ;" }
             if (props.topRated) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, #2BC8BE 60.94%, #F2276F 100%) ;" }
             if (props.popular) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(199, 174, 108, 0.74) 60.94%, #FE0000 100%) ;" }
-            if (props.upComing) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(255, 113, 206, 0.74) 60.94%, #B967FF 100%) ;" }
-            if (props.inTheather) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(198, 116, 232, 0.74) 60.94%, #8595E8 100%) ;" }
+            if (props.upcoming) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(255, 113, 206, 0.74) 60.94%, #B967FF 100%) ;" }
+            if (props.inTheater) { return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(198, 116, 232, 0.74) 60.94%, #8595E8 100%) ;" }
             return "linear-gradient(180deg, rgba(255, 255, 255, 0) 23.96%, rgba(169, 108, 199, 0.74) 60.94%, #AC00FE 100%);"
         }
     };
-    transition: 1000ms;
+    transition: 450ms;
     margin: 10px 15px;
+
+    &:hover {
+        transform: scale(1.08);
+    }
 `
 
 const ImgDiv = styled.div`
@@ -48,15 +52,16 @@ const ImgDiv = styled.div`
 
 const CardImg = styled.img`
     width: 100%;
+    object-fit: contain;
 `
 
-const MovieTitle = styled.a`
+const MovieTitle = styled.p`
     text-decoration: none;
     color: white;
-    max-height: 35px;
     overflow-y: hidden;
     text-overflow: ellipsis;
     text-align: center;
+    min-height: 35px;
 `
 
 MovieTitle.defaultProps = {
@@ -64,12 +69,13 @@ MovieTitle.defaultProps = {
     target: "_blank"
 }
 
-const CardDescription = styled.div`
+const CardDescription = styled.a`
+    text-decoration: none;
     height: 60px;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 `
 
@@ -81,10 +87,10 @@ const Card = ({ movie, ...restProps }) => {
     return (
         <CardDiv {...restProps}>
             <ImgDiv>
-                <CardImg src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} onError={onNoPoster}/>
+                <CardImg src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title ?? movie.name} onError={onNoPoster}/>
             </ImgDiv>
-            <CardDescription movie={movie}>
-                <MovieTitle href={`https://www.themoviedb.org/movie/${movie.id}`} >{movie["title"]}</MovieTitle>
+            <CardDescription href={`https://www.themoviedb.org/movie/${movie.id}`} target="_blank" rel='noopener noreferrer nofollow' >
+                <MovieTitle >{movie.title ?? movie.name}</MovieTitle>
             </CardDescription>
         </CardDiv>
     )
