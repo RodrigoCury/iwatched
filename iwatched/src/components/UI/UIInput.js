@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 
 const InputDiv = styled.div`
   width: ${(props) => (props.large ? "100%" : "auto")};
-  ${(props) => props.large ? "max-width: 1000px;" : ""}
+  ${(props) => (props.large ? "max-width: 1000px;" : "")}
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   margin: 15px auto;
-  color: #706FD3;
+  color: #706fd3;
 `;
 
 const Input = styled.input`
@@ -18,16 +18,16 @@ const Input = styled.input`
   padding: 5px 15px;
   border-radius: 24px;
   font-size: 25px;
-  color: #706FD3 !important;
+  color: #706fd3 !important;
   border: 2px solid white;
 
   &::placeholder {
-    color: #706FD3;
+    color: #706fd3;
     opacity: 1;
   }
 
-  &:focus{
-    color: #706FD3;
+  &:focus {
+    color: #706fd3;
   }
 `;
 

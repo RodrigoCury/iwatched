@@ -1,50 +1,50 @@
-import { useState } from "react"
-import axios from "axios"
+import { useState } from "react";
+import axios from "axios";
 
 const initialRequestData = {
-    error: null,
-    data: null,
-    loading: false,
+  error: null,
+  data: null,
+  loading: false,
 };
 
 export default function useApi(config) {
-    const [requestData, setRequestData] = useState(initialRequestData);
+  const [requestData, setRequestData] = useState(initialRequestData);
 
-    async function fazerRequest(localConfig){
-        let response 
-        
-        const finalConfig = {
-            ...config,
-            ...localConfig,
-        }
+  async function fazerRequest(localConfig) {
+    let response;
 
-        setRequestData({
-            ...initialRequestData,
-            loading: true,
-        })
+    const finalConfig = {
+      ...config,
+      ...localConfig,
+    };
 
-        try {
-            response = await axios(finalConfig);
+    setRequestData({
+      ...initialRequestData,
+      loading: true,
+    });
 
-            const newRequestInfo = {
-                ...initialRequestData,
-                data: response.data,
-            }
+    try {
+      response = await axios(finalConfig);
 
-            if (response.headers["x-total-count"] !== undefined) {
-                newRequestInfo.total = parseInt(response.headers["x-total-count"], 10)
-            }
+      const newRequestInfo = {
+        ...initialRequestData,
+        data: response.data,
+      };
 
-            setRequestData(newRequestInfo)
-        } catch (error) {
-            response = { error }
+      if (response.headers["x-total-count"] !== undefined) {
+        newRequestInfo.total = parseInt(response.headers["x-total-count"], 10);
+      }
 
-            setRequestData({
-                ...initialRequestData,
-                error,
-            });
-        }
+      setRequestData(newRequestInfo);
+    } catch (error) {
+      response = { error };
+
+      setRequestData({
+        ...initialRequestData,
+        error,
+      });
     }
+  }
 
-    return [fazerRequest, requestData]
+  return [fazerRequest, requestData];
 }

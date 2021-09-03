@@ -14,15 +14,14 @@ const Login = () => {
   const history = useHistory();
 
   const [formValues, setFormValues] = useState(initialFormValues);
-  const { token, setToken } = useContext(StoreContext)
+  const { token, setToken } = useContext(StoreContext);
 
   const [call, requestInfo] = useApi({
     url: "http://localhost:3340/users",
     params: {
-      user: formValues.user
-    }
-  })
-
+      user: formValues.user,
+    },
+  });
 
   function onChange(ev) {
     const { value, name } = ev.target;
@@ -34,31 +33,30 @@ const Login = () => {
 
   function onSubmit(event) {
     event.preventDefault();
-    call()
+    call();
   }
 
   useEffect(() => {
-    if (requestInfo.data && !requestInfo.loading){
-      const {username, password, id, token} = requestInfo.data[0];
+    if (requestInfo.data && !requestInfo.loading) {
+      const { username, password, id, token } = requestInfo.data[0];
 
-      if(formValues.user == username && password == formValues.password){
+      if (formValues.user == username && password == formValues.password) {
         setToken({
           id,
           user: username,
           token: token,
-        })
-        history.push('/')
+        });
+        history.push("/");
       } else {
-        console.log("no pass")
+        console.log("no pass");
       }
-      return
+      return;
     }
 
-    if(requestInfo.error){
+    if (requestInfo.error) {
       console.log(requestInfo.error);
     }
-
-  }, [requestInfo])
+  }, [requestInfo]);
 
   function cancel() {
     history.push("/");
@@ -100,7 +98,7 @@ const Login = () => {
   ];
 
   if (token && token.token) {
-      return (<Redirect to="/"/>)
+    return <Redirect to="/" />;
   }
 
   return (
@@ -111,8 +109,8 @@ const Login = () => {
         title="Login"
         buttons={buttons}
       />
-    </BasePageNoSearch>    
-  )
-}
+    </BasePageNoSearch>
+  );
+};
 
 export default Login;

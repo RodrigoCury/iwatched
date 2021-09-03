@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import PropTypes from 'prop-types'
-import { Link } from "react-router-dom"
+import React from "react";
+import styled from "styled-components";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const style = `
     padding: 5px 10px;
@@ -27,34 +27,33 @@ const style = `
         box-shadow:  0px 0px 15px -3px #706fd3;
     }
 
-`
+`;
 
 const ButtonTypes = {
-    button : styled.button`
-        ${style}
-    `,
-    a : styled.a`
-        ${style}
-    `,
-    Link : styled(Link)`
-        ${style}
-    `
-}
+  button: styled.button`
+    ${style}
+  `,
+  a: styled.a`
+    ${style}
+  `,
+  Link: styled(Link)`
+    ${style}
+  `,
+};
 
-
-const UIButton = ({component, children, ...restProps}) => {
-    const Button = ButtonTypes[component]
-    return <Button {...restProps}>{children}</Button>
-}
+const UIButton = ({ component, children, ...restProps }) => {
+  const Button = ButtonTypes[component];
+  return <Button {...restProps}>{children}</Button>;
+};
 
 UIButton.defaultProps = {
-    component: "a"
-}
+  component: "a",
+};
 
 UIButton.propTypes = {
-    type: PropTypes.string,
-    component: PropTypes.string,
-    children: PropTypes.any,
-}
+  type: PropTypes.string,
+  component: PropTypes.string,
+  children: PropTypes.any,
+};
 
-export default UIButton
+export default UIButton;

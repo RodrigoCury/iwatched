@@ -27,7 +27,7 @@ export default function UIForm({ fields, title, onSubmit, buttons }) {
         <UIButton {...tag} key={idx}>
           {tag.innerText}
         </UIButton>
-        ))}
+      ))}
     </Form>
   );
 }
