@@ -1,27 +1,27 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": 1,
+      "username": "Rodrigo",
+      "password": "1234",
+      "token": "1234",
+      "toWatch": [
         {
-            "id": 1,
-            "username": "Rodrigo",
-            "password": "1234",
-            "token": "1234",
-            "toWatch": [
-                {
-                    "movieId": "566525"
-                }
-            ],
-            "favourites": [
-                {
-                    "movieId": "459151",
-                    "hearts": 3
-                }
-            ],
-            "watched" : [
-                {
-                    "movieId" : "482373",
-                    "hearts" : 4
-                }
-            ]
+          "movieId": "566525"
         }
-    ]
+      ],
+      "favourites": [
+        {
+          "movieId": "459151",
+          "hearts": 3
+        }
+      ],
+      "watched": [
+        {
+          "movieId": "482373",
+          "hearts": 4
+        }
+      ]
+    }
+  ]
 }
