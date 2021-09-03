@@ -1,27 +1,37 @@
-import React from "react"
-import styled from "styled-components"
-import {Link} from "react-router-dom"
-// import PropTypes from "prop-types"
+import React, { useContext } from "react";
+import StoreContext from "components/Store/Context";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import UIUserHeader from "./UIUserHeader";
 
 const Title = styled(Link)`
-    color: #34ace0;
-    font-size: 40px;
-    text-decoration: none;
-    font-weight: bold;
-`
+  color: #ffffff;
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  align-self: center;
+`;
 
 const Header = styled.header`
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 25px;
-`
-export default function UIHeader() {
-    return (
-        <Header>
-            <Title to='/'>iWatched</Title>
-        </Header>
-    )
-}
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px auto 10px auto;
+  max-width: 1000px;
+`;
 
-UIHeader.propTypes = {
+export default function UIHeader() {
+  function logOut() {
+    setToken(null);
+  }
+
+  const { token, setToken } = useContext(StoreContext);
+
+  return (
+    <Header>
+      <Title to="/">iWatched</Title>
+      <UIUserHeader token={token} logOut={logOut} />
+    </Header>
+  );
 }

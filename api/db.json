@@ -1,60 +1,27 @@
 {
-    "movies": [
+    "users": [
         {
             "id": 1,
-            "name": "MiranhaVerso2",
-            "href": "https://www.themoviedb.org/movie/569094-spider-man-into-the-spider-verse-2",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8ycplQbTU6DRRwiG95lQEpYkOVg.jpg",
-            "hearts": 4
-        },
-        {
-            "id": 2,
-            "name": "Homem-Aranha: No Aranhaverso",
-            "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
-        },
-        {
-            "id": 3,
-            "name": "F9",
-            "href": "https://www.themoviedb.org/movie/385128-f9",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fnAzaxRSiveFafudJtByxA7I2xT.jpg",
-            "hearts": 1
-        },
-        {
-            "id": 4,
-            "name": "Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso",
-            "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
-        },
-        {
-            "id": 5,
-            "name": "MiranhaVerso2",
-            "href": "https://www.themoviedb.org/movie/569094-spider-man-into-the-spider-verse-2",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/8ycplQbTU6DRRwiG95lQEpYkOVg.jpg",
-            "hearts": 4
-        },
-        {
-            "id": 6,
-            "name": "Homem-Aranha: No Aranhaverso",
-            "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
-        },
-        {
-            "id": 7,
-            "name": "F9",
-            "href": "https://www.themoviedb.org/movie/385128-f9",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fnAzaxRSiveFafudJtByxA7I2xT.jpg",
-            "hearts": 1
-        },
-        {
-            "id": 8,
-            "name": "Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso Homem-Aranha: No Aranhaverso",
-            "href": "https://www.themoviedb.org/movie/324857-spider-man-into-the-spider-verse",
-            "imageUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ybQSBSrINtjWsJQ6Ih8sva8HlEZ.jpg",
-            "hearts": 5
+            "username": "Rodrigo",
+            "password": "1234",
+            "token": "1234",
+            "toWatch": [
+                {
+                    "movieId": "566525"
+                }
+            ],
+            "favourites": [
+                {
+                    "movieId": "459151",
+                    "hearts": 3
+                }
+            ],
+            "watched" : [
+                {
+                    "movieId" : "482373",
+                    "hearts" : 4
+                }
+            ]
         }
     ]
 }

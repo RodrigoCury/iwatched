@@ -4,13 +4,20 @@ import {
     Switch,
     Route,
 } from 'react-router-dom'
-import Search from 'pages/Search/Search'
+import StoreProvider from 'components/Store/Provider'
+import Index from 'pages/Index/Index'
+import Login from 'pages/Login/Login'
+// eslint-disable-next-line no-unused-vars
+import RoutesPrivate from 'components/Routes/Private/Private'
 
 const Root = () => (
     <Router>
-        <Switch>
-            <Route path='/' component={Search}/>
-        </Switch>
+        <StoreProvider>
+            <Switch>
+                <Route path='/login' component={Login}/>
+                <Route path='/' component={Index}/>
+            </Switch>
+        </StoreProvider>
     </Router>
 )
 
