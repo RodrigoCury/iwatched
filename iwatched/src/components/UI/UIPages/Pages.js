@@ -18,7 +18,7 @@ export const BasePageNoSearch = ({children}) => (
 
 export const BasePage = ({children}) => {
   const [search, setSearch] = useState("");
-
+  const [searchFlag, setSearchFlag] = useState(false)
   const [query, setQuery] = useState("");
   
   const [fetchMovies, movies] = useApi({
@@ -33,8 +33,16 @@ export const BasePage = ({children}) => {
   function Search(ev) {
     if (ev.key === "Enter" && search !== ""){
       setQuery(search)
+      setSearchFlag(true)
       fetchMovies()
     }
+  }
+
+  function onChange(ev){
+    if(ev.target.value === ""){
+      setSearchFlag(false)
+    }
+    setSearch(ev.target.value)
   }
 
   return (
@@ -43,13 +51,13 @@ export const BasePage = ({children}) => {
       <UIInput
         name="movie-input"
         value={search}
-        onChange={(ev) => setSearch(ev.target.value)}
+        onChange={onChange}
         onKeyPress={Search}
         placeholder="Pesquisar..."
         large
       />
       {
-        search.length && (movies.data || movies.loading || movies.error) 
+        searchFlag && (movies.data || movies.loading || movies.error) 
         ? (
             <CardContainer search data={movies} query={query ?? null} />
         ): children
