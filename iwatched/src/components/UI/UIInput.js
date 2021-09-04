@@ -39,8 +39,6 @@ const Label = styled.label`
 `;
 
 export default function UIInput({ label, name, id, large, ...restProps }) {
-  console.log(large);
-
   return (
     <InputDiv className={"form-field"} large={large}>
       {label && <Label htmlFor={id ?? name}>{label}</Label>}

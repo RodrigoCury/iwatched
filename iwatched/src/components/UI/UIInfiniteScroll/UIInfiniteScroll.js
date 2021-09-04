@@ -15,7 +15,6 @@ const UIInfiniteScroll = ({ fetchMore }) => {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         observer.disconnect();
-        console.log("aCHEI");
         fetchMore();
       }
     }, options);
