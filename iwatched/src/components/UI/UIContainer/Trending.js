@@ -4,18 +4,20 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Container } from "./UIContainer";
 import useApi from "components/utils/useApi";
-import Card from "components/Card/Card";
-import useHorizontalScroll from "components/utils/useHorizontalScroll";
+import { ApiKey } from "components/utils/apiKey";
+import { ScrollableCardContainer } from "./UIContainer";
 
 const Header = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 10px 15px;
 `;
 const Title = styled.h3`
   color: #000;
+  margin: 0;
+  padding: 0;
 `;
 
 const ViewMore = styled(Link)`
@@ -27,35 +29,12 @@ const ViewMore = styled(Link)`
     text-decoration: underline;
   }
 `;
-const CardContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  padding: 10px 0;
-  overflow-x: scroll;
-  overflow-y: hidden;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const Trending = ({ title, url, ...restProps }) => {
-  // eslint-disable-next-line no-unused-vars
-  const pqp = {
-    urls: [
-      "https://api.themoviedb.org/3/movie/latest?api_key=<<api_key>>&language=pt-BR",
-      "https://api.themoviedb.org/3/movie/now_playing?api_key=<<api_key>>&language=pt-BR&page=1",
-    ],
-  };
-
-  const scrollRef = useHorizontalScroll();
-
+const Trending = ({ to, title, url, ...restProps }) => {
   const [load, requestInfo] = useApi({
     url,
     params: {
-      api_key: "4d751774b43dab4d91f60e7ee588cf1f",
+      api_key: ApiKey,
       language: "pt-BR",
     },
   });
@@ -64,33 +43,29 @@ const Trending = ({ title, url, ...restProps }) => {
     load();
   }, []);
 
-  useEffect(() => {
-    console.log(requestInfo);
-  }, [requestInfo]);
+  // useEffect(() => {
+  //   console.log(requestInfo);
+  // }, [requestInfo]);
 
   return (
-    <Container quarter>
+    <Container>
       <Header>
         <Title>{title}</Title>
-        <ViewMore to="">Veja Tudo</ViewMore>
+        <ViewMore to={`/viewAll/${to}`}>Veja Tudo</ViewMore>
       </Header>
-      <CardContainer ref={scrollRef}>
-        {requestInfo.error ? (
-          <Title>{`Houve um erro ao pegar a lista de ${title}`}</Title>
-        ) : requestInfo.loading || requestInfo.data == null ? (
-          <Title>Carregando...</Title>
-        ) : (
-          requestInfo.data.results.map((movie) => (
-            <Card {...restProps} movie={movie} key={movie.id} />
-          ))
-        )}
-      </CardContainer>
+      <ScrollableCardContainer
+        data={requestInfo.data}
+        error={requestInfo.error}
+        loading={requestInfo.loading}
+        {...restProps}
+      ></ScrollableCardContainer>
     </Container>
   );
 };
 
 Trending.propTypes = {
   title: PropTypes.string,
+  to: PropTypes.string,
   url: PropTypes.string,
 };
 

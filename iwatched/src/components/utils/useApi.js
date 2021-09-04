@@ -14,35 +14,50 @@ export default function useApi(config) {
     let response;
 
     const finalConfig = {
+      updateRequestData: (newData) => newData,
       ...config,
       ...localConfig,
     };
 
-    setRequestData({
-      ...initialRequestData,
-      loading: true,
-    });
+    if (finalConfig.isFetchMore) {
+      setRequestData({
+        ...initialRequestData,
+        data: requestData.data,
+        loading: true,
+      });
+    } else if (!finalConfig.quietly) {
+      setRequestData({
+        ...initialRequestData,
+        loading: true,
+      });
+    }
 
     try {
       response = await axios(finalConfig);
 
-      const newRequestInfo = {
+      const newRequestData = {
         ...initialRequestData,
         data: response.data,
       };
 
-      if (response.headers["x-total-count"] !== undefined) {
-        newRequestInfo.total = parseInt(response.headers["x-total-count"], 10);
+      if (response.data.total_pages !== undefined) {
+        newRequestData.total = parseInt(response.data.total_pages, 10);
       }
 
-      setRequestData(newRequestInfo);
+      setRequestData(
+        finalConfig.updateRequestData(newRequestData, requestData)
+      );
     } catch (error) {
-      response = { error };
+      response = error;
 
       setRequestData({
         ...initialRequestData,
-        error,
+        error: error,
       });
+    }
+
+    if (finalConfig.onComplete) {
+      finalConfig.onComplete();
     }
   }
 

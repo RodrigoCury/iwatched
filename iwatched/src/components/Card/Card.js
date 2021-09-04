@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const CardDiv = styled.div`
-  max-width: 200px;
+  max-width: 150px;
   heigth: auto;
   display: flex;
   flex-direction: column;
@@ -54,8 +54,8 @@ const CardDiv = styled.div`
 `;
 
 const ImgDiv = styled.div`
-  min-width: 200px;
-  min-height: 300px;
+  min-width: 125px;
+  min-height: 200px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -71,10 +71,11 @@ const CardImg = styled.img`
 const MovieTitle = styled.p`
   text-decoration: none;
   color: white;
-  overflow-y: hidden;
+  overflow-y: ellipsis;
   text-overflow: ellipsis;
   text-align: center;
-  min-height: 35px;
+  font-size: 0.8em;
+  font-weight: bold;
 `;
 
 MovieTitle.defaultProps = {

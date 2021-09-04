@@ -53,7 +53,7 @@ export const BasePage = ({ children }) => {
         large
       />
       {searchFlag && (movies.data || movies.loading || movies.error) ? (
-        <CardContainer search data={movies} query={query ?? null} />
+        <CardContainer search {...movies} query={query ?? null} />
       ) : (
         children
       )}
